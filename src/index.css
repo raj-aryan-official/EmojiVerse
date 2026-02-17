@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    @apply bg-dark-950 text-white antialiased;
+  }
+
+  /* Keep native select dropdown options readable across OS/browser defaults */
+  select option {
+    @apply bg-dark-900 text-white;
+  }
+
+  * {
+    @apply border-white/5;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-brand-600 rounded-full;
+  }
+
+  ::selection {
+    @apply bg-brand-500/40 text-white;
+  }
+}
+
+@layer components {
+
+  /* Glass card */
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .glass-hover {
+    @apply glass transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-card-hover;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-400 via-neon-purple to-neon-cyan;
+  }
+
+  .gradient-text-warm {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-orange via-neon-pink to-neon-purple;
+  }
+
+  /* Neon buttons */
+  .btn-primary {
+    @apply relative px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-neon-indigo hover:-translate-y-0.5 active:translate-y-0 active:shadow-none overflow-hidden;
+    isolation: isolate;
+    /* keep pseudo-element behind text reliably */
+  }
+
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-brand-500 to-neon-purple opacity-0 transition-opacity duration-300;
+    z-index: -1;
+    /* always behind button content */
+  }
+
+  .btn-primary:hover::before {
+    @apply opacity-100;
+  }
+
+  .btn-ghost {
+    @apply px-5 py-2.5 text-white/70 hover:text-white border border-white/10 hover:border-white/30 rounded-xl transition-all duration-200 hover:bg-white/5 font-medium;
+  }
+
+  /* Emoji card */
+  .emoji-card {
+    @apply relative flex flex-col items-center justify-center gap-2 p-4 rounded-2xl cursor-pointer bg-dark-700 border border-white/10 transition-all duration-200 hover:bg-dark-600 hover:border-brand-500/40 hover:-translate-y-1 hover:shadow-neon-indigo active:scale-95 select-none;
+  }
+
+  /* Input */
+  .input-field {
+    @apply w-full bg-dark-700 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all duration-200;
+  }
+
+  /* Pill badge */
+  .pill {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium border transition-all duration-200 cursor-pointer select-none;
+  }
+
+  .pill-active {
+    @apply bg-brand-600 border-brand-500 text-white shadow-neon-indigo;
+  }
+
+  .pill-inactive {
+    @apply bg-dark-700 border-white/10 text-white/60 hover:bg-dark-600 hover:border-white/20 hover:text-white;
+  }
+
+  /* Skeleton shimmer */
+  .skeleton {
+    @apply bg-dark-700 rounded-xl animate-shimmer;
+    background: linear-gradient(90deg, #161624 25%, #22223a 50%, #161624 75%);
+    background-size: 200% 100%;
+  }
+
+  /* Section heading */
+  .section-title {
+    @apply font-display text-3xl md:text-4xl font-bold tracking-tight;
+  }
+
+  /* Noise texture overlay */
+  .noise::after {
+    content: '';
+    @apply absolute inset-0 opacity-[0.03] pointer-events-none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bg-size-200 {
+    background-size: 200% 200%;
+  }
+
+  /* Simple line clamp helpers (no Tailwind plugin needed) */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  /* Fade edges for horizontal scrollers */
+  .mask-fade-sides {
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+  }
+}

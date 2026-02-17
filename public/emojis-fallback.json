@@ -1,0 +1,52 @@
+[
+  {
+    "name": "grinning face",
+    "category": "smileys and people",
+    "group": "face positive",
+    "htmlCode": ["&#128512;"],
+    "unicode": ["U+1F600"],
+    "emoji": "😀",
+    "id": "grinning_face",
+    "keywords": ["smile", "happy", "joy"]
+  },
+  {
+    "name": "rocket",
+    "category": "travel and places",
+    "group": "transport air",
+    "htmlCode": ["&#128640;"],
+    "unicode": ["U+1F680"],
+    "emoji": "🚀",
+    "id": "rocket",
+    "keywords": ["space", "fly", "fast"]
+  },
+  {
+    "name": "sparkles",
+    "category": "activities", 
+    "group": "event",
+    "htmlCode": ["&#10024;"],
+    "unicode": ["U+2728"],
+    "emoji": "✨",
+    "id": "sparkles",
+    "keywords": ["magic", "shiny", "star"]
+  },
+  {
+    "name": "fire",
+    "category": "travel and places",
+    "group": "sky and weather",
+    "htmlCode": ["&#128293;"],
+    "unicode": ["U+1F525"],
+    "emoji": "🔥",
+    "id": "fire",
+    "keywords": ["hot", "burn", "lit"]
+  },
+  {
+    "name": "red heart",
+    "category": "smileys and people",
+    "group": "emotion",
+    "htmlCode": ["&#10084;"],
+    "unicode": ["U+2764"],
+    "emoji": "❤️",
+    "id": "red_heart",
+    "keywords": ["love", "like"]
+  }
+]
