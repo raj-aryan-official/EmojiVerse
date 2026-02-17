@@ -82,6 +82,18 @@ export default function Browse() {
         setSearchParams(params, { replace: true });
     }, [state.activeCategory, state.activeGroup, state.sortBy, state.searchQuery, setSearchParams]);
 
+    // Scroll Reset Logic
+    const scrollContainerRef = useRef(null);
+
+    useEffect(() => {
+        // Reset scroll for the inner container (Desktop)
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollTop = 0;
+        }
+        // Reset window scroll (Mobile)
+        window.scrollTo(0, 0);
+    }, [state.activeCategory, state.activeGroup, state.searchQuery, state.sortBy]);
+
     return (
         <div className="container mx-auto px-4 py-8 flex gap-8 min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4rem)] lg:overflow-hidden">
             {/* Sidebar Filters (Desktop) */}
@@ -259,7 +271,10 @@ export default function Browse() {
                 </div>
 
                 {/* Scroll area on lg+ so only emojis move */}
-                <div className="w-full lg:flex-1 lg:min-h-0 lg:overflow-y-auto custom-scrollbar lg:pr-2">
+                <div
+                    ref={scrollContainerRef}
+                    className="w-full lg:flex-1 lg:min-h-0 lg:overflow-y-auto custom-scrollbar lg:pr-2"
+                >
                     <EmojiGrid />
                 </div>
             </div>
