@@ -25,7 +25,7 @@ export default function Layout({ children }) {
 
             {/* Content */}
             <Navbar />
-            <main className="flex-1 relative z-10 flex flex-col">
+            <main className="flex-1 relative z-10 flex flex-col pt-20">
                 {children}
             </main>
             <Footer />
